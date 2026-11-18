@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Calculator</title>
+
+    <style>
+
+        /* GENERAL DESIGN */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* CALCULATOR CONTAINER */
+
+        .calculator {
+            background: white;
+            width: 100%;
+            max-width: 380px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #243b55;
+        }
+
+        p {
+            text-align: center;
+            color: #777;
+        }
+
+        /* INPUT FIELDS */
+
+        input, select {
+            width: 100%;
+            padding: 14px;
+            margin-top: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        /* CALCULATE BUTTON */
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        /* RESULT DISPLAY */
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f0ff;
+            border-radius: 10px;
+            text-align: center;
+            color: #1d4ed8;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* ERROR MESSAGE */
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .footer {
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="calculator">
+
+        <h1>My Calculator</h1>
+
+        <p>Simple Python Calculator Web App</p>
+
+        <form method="POST">
+
+            <input
+                type="number"
+                step="any"
+                name="num1"
+                placeholder="Enter first number"
+                required
+            >
+
+            <select name="operator">
+
+                <option value="+">Addition (+)</option>
+
+                <option value="-">Subtraction (-)</option>
+
+                <option value="*">Multiplication (×)</option>
+
+                <option value="/">Division (÷)</option>
+
+            </select>
+
+            <input
+                type="number"
+                step="any"
+                name="num2"
+                placeholder="Enter second number"
+                required
+            >
+
+            <button type="submit">
+                CALCULATE
+            </button>
+
+        </form>
+
+        {% if answer is not none %}
+
+            <div class="result">
+                Answer: {{ answer }}
+            </div>
+
+        {% endif %}
+
+        {% if error %}
+
+            <div class="error">
+                {{ error }}
+            </div>
+
+        {% endif %}
+
+        <p class="footer">
+            Created with Python and Flask
+        </p>
+
+    </div>
+
+</body>
+
+</html>
